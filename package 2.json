@@ -1,0 +1,13 @@
+{
+  "name": "love-card",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A sweet anniversary love card",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
