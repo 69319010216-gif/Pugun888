@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffe3ef">
+<title>จดหมายถึงคนพิเศษ 💗</title>
+<style>
+:root{
+  --pink:#ff79ad;--deep:#c83f78;--soft:#fff0f6;
+  --cream:#fffafc;--text:#71354e;--line:#ffd0e1;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100svh;overflow-x:hidden;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:linear-gradient(145deg,#ffe4ef,#fff8fb 48%,#ffeaf3);
+}
+button,input{font:inherit}
+.screen{
+  min-height:100svh;display:none;align-items:center;justify-content:center;
+  padding:26px 18px;position:relative;isolation:isolate;
+}
+.screen.active{display:flex;animation:fade .65s ease both}
+.panel{
+  width:min(100%,430px);padding:30px 24px;text-align:center;
+  background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.95);
+  border-radius:28px;box-shadow:0 18px 55px rgba(200,63,120,.13);
+  backdrop-filter:blur(10px);position:relative;z-index:2;
+}
+h1{font-size:clamp(25px,7vw,34px);margin:8px 0 10px;color:var(--deep)}
+p{line-height:1.8}
+.sub{margin:0 0 22px;color:#986079}
+input{
+  width:100%;padding:15px;border:1.5px solid var(--line);border-radius:15px;
+  text-align:center;letter-spacing:5px;font-size:22px;color:var(--deep);
+  background:#fffafd;outline:none;
+}
+input:focus{border-color:var(--pink);box-shadow:0 0 0 4px #ff79ad22}
+.btn{
+  border:0;border-radius:999px;padding:13px 25px;margin-top:16px;
+  color:white;background:linear-gradient(135deg,#ff91ba,#e95d98);
+  box-shadow:0 8px 20px #e95d9833;cursor:pointer;font-weight:700;
+  transition:transform .2s;
+}
+.btn:active{transform:scale(.97)}
+.error{min-height:26px;color:#c83f78;font-size:14px;margin:10px 0 0}
+.heart{font-size:48px;animation:pulse 1.5s infinite}
+.envelope-wrap{cursor:pointer;border:0;background:transparent;padding:18px 8px 8px}
+.envelope{
+  width:220px;height:145px;position:relative;margin:20px auto 12px;
+  background:#ffb5d0;border-radius:10px;box-shadow:0 12px 25px #c83f7826;
+}
+.envelope:before{
+  content:"";position:absolute;inset:0;
+  background:#ffd5e4;clip-path:polygon(0 0,50% 58%,100% 0);
+  border-radius:10px 10px 0 0;z-index:2;
+}
+.envelope:after{
+  content:"";position:absolute;inset:0;
+  background:#ff8fba;clip-path:polygon(0 100%,0 0,50% 58%,100% 0,100% 100%);
+  border-radius:0 0 10px 10px;z-index:1;
+}
+.seal{
+  position:absolute;z-index:3;left:50%;top:54%;transform:translate(-50%,-50%);
+  width:43px;height:43px;border-radius:50%;background:#e85c96;color:white;
+  display:grid;place-items:center;font-size:22px;box-shadow:0 3px 10px #b83c7040;
+}
+.letter{
+  width:min(100%,470px);padding:30px 25px 28px;
+  background:linear-gradient(160deg,#fffdfd,#fff1f7);
+  border:1px solid #ffe0eb;border-radius:8px 8px 22px 22px;
+  box-shadow:0 18px 50px #c83f7820;position:relative;z-index:2;
+}
+.letter:before{
+  content:"";position:absolute;inset:10px;border:1px dashed #f6b8d0;
+  border-radius:5px 5px 16px 16px;pointer-events:none;
+}
+.letter-inner{position:relative;z-index:1}
+.letter h2{margin:0 0 18px;color:var(--deep);font-size:25px;text-align:center}
+.message{font-size:17px;line-height:2;text-align:center;white-space:pre-line}
+.message span{display:block;opacity:0;transform:translateY(9px);animation:rise .7s ease forwards}
+.message span:nth-child(1){animation-delay:.25s}
+.message span:nth-child(2){animation-delay:1s}
+.message span:nth-child(3){animation-delay:1.75s}
+.message span:nth-child(4){animation-delay:2.5s}
+.message span:nth-child(5){animation-delay:3.25s}
+.message span:nth-child(6){animation-delay:4s}
+.message span:nth-child(7){animation-delay:4.75s}
+.message span:nth-child(8){animation-delay:5.5s}
+.sign{margin-top:22px;text-align:center;color:#d95791;font-weight:700;opacity:0;animation:rise .8s ease 6.2s forwards}
+.float-heart{
+  position:fixed;bottom:-35px;z-index:0;pointer-events:none;
+  color:#f18bb5;opacity:.55;animation:floatUp 8s linear infinite;
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pulse{50%{transform:scale(1.12)}}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+@media(max-width:380px){.panel{padding:25px 18px}.letter{padding:25px 18px}.message{font-size:16px}}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+ .message span,.sign{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<section class="screen active" id="lock">
+  <div class="panel">
+    <div class="heart">💗</div>
+    <h1>มีของขวัญให้คนน่ารัก</h1>
+    <p class="sub">ลองใส่วันครบรอบของเราดูสิคะ ♡</p>
+    <form id="codeForm">
+      <input id="code" type="password" inputmode="numeric" maxlength="6"
+        placeholder="••••••" aria-label="รหัสวันครบรอบ" autocomplete="off">
+      <button class="btn" type="submit">เปิดของขวัญ 💌</button>
+      <p class="error" id="error" aria-live="polite"></p>
+    </form>
+    <p style="font-size:13px;color:#b27b94;margin-bottom:0">มีบางอย่างอยากบอกเธออยู่ข้างในนะ</p>
+  </div>
+</section>
+
+<section class="screen" id="envelopeScreen">
+  <div class="panel">
+    <div class="heart">🌷</div>
+    <h1>ถึงคนพิเศษของผ้ม</h1>
+    <p class="sub">มีจดหมายถึงคุนด้วยนะะ</p>
+    <button class="envelope-wrap" id="openLetter" aria-label="เปิดจดหมาย">
+      <div class="envelope"><div class="seal">♥</div></div>
+      <strong style="color:#d95791">แตะที่จดหมายเพื่อเปิด</strong>
+    </button>
+    <p style="font-size:13px;color:#b27b94">ตั้งใจทำให้คุนเลยนะ 💗</p>
+  </div>
+</section>
+
+<section class="screen" id="letterScreen">
+  <article class="letter">
+    <div class="letter-inner">
+      <h2>ถึงคนน่ารักของผ้ม 💗</h2>
+      <div class="message">
+        <span>รักคุนน้ะ รักมากกมากมากกก 🥺💕</span>
+        <span>ขอโทดที่ทำตัวไม่น่ารักนะะ</span>
+        <span>แต่คนไม่น่ารักคนนี้อยากมีเธออยู่น้ะ</span>
+        <span>ผ้มจะตั้งใจปรับตัวให้ดีขึ้นนจิงจิง</span>
+        <span>คุนไม่ต้องเชื่ออ</span>
+        <span>แต่ผ้มตั้งใจที่จะทำจริงจริง</span>
+        <span>ผ้มรักกคุนน้ะะ</span>
+        <span>ขอบคุณที่ยังอยู่ด้วยกันนะคะ 💞</span>
+      </div>
+      <div class="sign">รักคุนที่สุดเลยย 💗</div>
+    </div>
+  </article>
+</section>
+
+<script>
+const screens = ["lock","envelopeScreen","letterScreen"];
+function showScreen(id){
+  screens.forEach(name => document.getElementById(name).classList.toggle("active",name===id));
+}
+document.getElementById("codeForm").addEventListener("submit",function(event){
+  event.preventDefault();
+  const entered = document.getElementById("code").value.trim();
+  const error = document.getElementById("error");
+  if(entered === "160669"){
+    error.textContent = "";
+    showScreen("envelopeScreen");
+  }else{
+    error.textContent = "รหัสยังไม่ถูกน้า ลองใหม่อีกครั้งนะ 💗";
+    document.getElementById("code").value = "";
+  }
+});
+document.getElementById("openLetter").addEventListener("click",function(){
+  showScreen("letterScreen");
+});
+function makeHeart(){
+  const heart=document.createElement("span");
+  heart.className="float-heart";
+  heart.textContent=["♡","♥","💗","💕"][Math.floor(Math.random()*4)];
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(14+Math.random()*18)+"px";
+  heart.style.animationDuration=(6+Math.random()*5)+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),12000);
+}
+setInterval(makeHeart,850);
+</script>
+</body>
+</html>
